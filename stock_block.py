@@ -12,14 +12,13 @@ class Stock(RESTPolling):
                      "%20symbol%20in%20({0})&format=json"
                      "&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys")
 
-    symbols = ListProperty(str, title='Symbols/Tickers')
-    queries = None
+    queries = ListProperty(str, title='Symbols/Tickers')
 
     def __init__(self):
         super().__init__()
 
     def _prepare_url(self, paging=False):
-        sym_str = ",".join(['"' + sym + '"' for sym in self.symbols])
+        sym_str = ",".join(['"' + sym + '"' for sym in self.queries])
         self._url = self._yql_base_url.format(sym_str)
 
         return {"Content-Type": "application/json"}
