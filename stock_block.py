@@ -36,5 +36,10 @@ class Stock(RESTPolling):
             self._logger.warning("No results found: {0}".format(results))
             return [], None
 
+        # If only one query, then quote is a dict instead of a list
+        quote = results.get('quote', [])
+        if not isinstance(quote, list):
+            quote = [quote]
+
         # No paging
-        return [Signal(s) for s in results.get('quote', [])], None
+        return [Signal(s) for s in quote], None
