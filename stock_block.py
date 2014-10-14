@@ -17,6 +17,12 @@ class Stock(RESTPolling):
     def __init__(self):
         super().__init__()
 
+    def start(self):
+        super().start()
+        # RESTPolling handles scheduling the poll job,
+        # but we want one poll on start.
+        self.poll()
+
     def _prepare_url(self, paging=False):
         sym_str = ",".join(['"' + sym + '"' for sym in self.queries])
         self._url = self._yql_base_url.format(sym_str)
