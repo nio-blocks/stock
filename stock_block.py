@@ -12,7 +12,7 @@ class Stock(RESTPolling):
                      "%20symbol%20in%20({0})&format=json"
                      "&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys")
 
-    queries = ListProperty(str, title='Symbols/Tickers')
+    queries = ListProperty(str, title='Symbols/Tickers', default='')
 
     def _prepare_url(self, paging=False):
         sym_str = ",".join(['"' + sym + '"' for sym in self.queries()])
