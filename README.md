@@ -1,7 +1,7 @@
 Stock
 ============
 
-Returns some stock quotes, along with other information, from Yahoo Finance
+Returns some stock quotes, along with other information, from [Yahoo Finance](https://finance.yahoo.com/)
 
 Properies
 ---------
@@ -18,25 +18,28 @@ None
 
 Input
 -----
-N/A
+None
 
 Output
 ------
 A list of signals, one per ticker. 
 
-The following are fields that are returned in each signal:
+The following is an example of fields that are returned in each signal:
 
-- DaysHigh
-- YearHigh
-- Name
-- StockExchange
-- MarketCapitalization
-- Volume
-- DaysLow
-- YearLow
-- DaysRange
-- LastTradePriceOnly
-- Change
-- symbol
-- Symbol
-- AverageDailyVolume
+```
+{  
+  fields: {  
+    change: string,
+    chg_percent: double,
+    day_high: double,
+    day_low: double,
+    issuer_name: string,
+    name: string,
+    price: double,
+    type: string,
+    utctime: datetime,
+    year_high: double,
+    year_low: double
+  }
+}
+```

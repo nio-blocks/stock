@@ -1,10 +1,10 @@
-from nio.metadata.properties import ListProperty
-from nio.common.discovery import Discoverable, DiscoverableType
-from nio.common.signal.base import Signal
+from nio.properties.List import ListProperty
+from nio.util.discovery import discoverable
+from nio import Signal
 from .http_blocks.rest.rest_block import RESTPolling
 
 
-@Discoverable(DiscoverableType.block)
+@discoverable
 class Stock(RESTPolling):
 
     _yql_base_url = ("https://query.yahooapis.com/v1/public/yql?"
@@ -12,10 +12,10 @@ class Stock(RESTPolling):
                      "%20symbol%20in%20({0})&format=json"
                      "&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys")
 
-    queries = ListProperty(str, title='Symbols/Tickers')
+    queries = ListProperty(str, title='Symbols/Tickers', default='')
 
     def _prepare_url(self, paging=False):
-        sym_str = ",".join(['"' + sym + '"' for sym in self.queries])
+        sym_str = ",".join(['"' + sym + '"' for sym in self.queries()])
         self._url = self._yql_base_url.format(sym_str)
 
         return {"Content-Type": "application/json"}
@@ -26,11 +26,11 @@ class Stock(RESTPolling):
         try:
             results = body['query']['results']
         except Exception:
-            self._logger.error("Invalid resposnse format: {0}".format(body))
+            self.logger.error("Invalid resposnse format: {0}".format(body))
             results = None
 
         if not results or not isinstance(results, dict):
-            self._logger.warning("No results found: {0}".format(results))
+            self.logger.warning("No results found: {0}".format(results))
             return [], None
 
         # If only one query, then quote is a dict instead of a list
