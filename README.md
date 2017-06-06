@@ -3,7 +3,7 @@ Stock
 
 Returns some stock quotes, along with other information, from [Yahoo Finance](https://finance.yahoo.com/)
 
-Properies
+Properties
 ---------
 
 -   **symbols**: List of stock tickers to get quotes for
