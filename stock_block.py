@@ -1,4 +1,5 @@
-from nio.properties.List import ListProperty
+from nio.properties import ListProperty
+from nio.types import StringType
 from nio.util.discovery import discoverable
 from nio import Signal
 from .http_blocks.rest.rest_block import RESTPolling
@@ -12,7 +13,7 @@ class Stock(RESTPolling):
                      "%20symbol%20in%20({0})&format=json"
                      "&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys")
 
-    queries = ListProperty(str, title='Symbols/Tickers', default='')
+    queries = ListProperty(StringType, title='Symbols/Tickers', default=[])
 
     def _prepare_url(self, paging=False):
         sym_str = ",".join(['"' + sym + '"' for sym in self.queries()])
