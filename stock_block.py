@@ -2,7 +2,7 @@ from nio.properties import ListProperty
 from nio.types import StringType
 from nio.util.discovery import discoverable
 from nio import Signal
-from .http_blocks.rest.rest_block import RESTPolling
+from .rest_polling.rest_block import RESTPolling
 
 
 @discoverable
