@@ -1,19 +1,10 @@
 {
-    "nio/Stock": {
-        "Output": {
-            "Description": "A list of signals, one per ticker.\nThe following is an example of fields that are returned in each signal:\n```\n{\nfields: {\nchange: string,\nchg_percent: double,\nday_high: double,\nday_low: double,\nissuer_name: string,\nname: string,\nprice: double,\ntype: string,\nutctime: datetime,\nyear_high: double,\nyear_low: double\n}\n}\n```"
-        },
-        "Input": {
-            "Description": "None"
-        },
-        "Category": "WebService",
-        "Description": "Returns some stock quotes, along with other information, from [Yahoo Finance](https://finance.yahoo.com/)",
-        "Version": "1.0.0",
-        "Commands": {},
-        "Properties": {
-            "symbols": {
-                "description": "List of stock tickers to get quotes for"
-            }
-        }
-    }
+  "nio/Stock": {
+    "version": "0.0.1",
+    "description": "",
+    "inputs": {},
+    "outputs": {},
+    "properties": {},
+    "commands": {}
+  }
 }
