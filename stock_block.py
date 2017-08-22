@@ -1,4 +1,4 @@
-from nio.properties import ListProperty
+from nio.properties import ListProperty, VersionProperty
 from nio.types import StringType
 from nio.util.discovery import discoverable
 from nio import Signal
@@ -14,6 +14,7 @@ class Stock(RESTPolling):
                      "&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys")
 
     queries = ListProperty(StringType, title='Symbols/Tickers', default=[])
+    version = VersionProperty('1.0.1')
 
     def _prepare_url(self, paging=False):
         sym_str = ",".join(['"' + sym + '"' for sym in self.queries()])
