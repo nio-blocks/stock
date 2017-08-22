@@ -1,7 +1,7 @@
 {
   "nio/Stock": {
-    "Language": "Python",
-    "Version": "1.0.1",
-    "Reference": "git://github.com/nio-blocks/stock.git"
+    "language": "Python",
+    "version": "1.0.1",
+    "url": "git://github.com/nio-blocks/stock.git"
   }
 }
