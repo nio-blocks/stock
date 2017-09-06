@@ -1,6 +1,6 @@
 Stock
 =====
-
+Returns some stock quotes, along with other information, from [Yahoo Finance](https://finance.yahoo.com/).
 
 Properties
 ----------

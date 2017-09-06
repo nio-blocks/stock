@@ -1,7 +1,7 @@
 {
   "nio/Stock": {
     "version": "1.0.1",
-    "description": "",
+    "description": "Returns some stock quotes, along with other information, from [Yahoo Finance](https://finance.yahoo.com/).",
     "properties": {
       "include_query": {
         "title": "Include Query Field",
