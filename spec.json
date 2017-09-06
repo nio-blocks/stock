@@ -1,19 +1,53 @@
 {
-    "nio/Stock": {
-        "Output": {
-            "Description": "A list of signals, one per ticker.\nThe following is an example of fields that are returned in each signal:\n```\n{\nfields: {\nchange: string,\nchg_percent: double,\nday_high: double,\nday_low: double,\nissuer_name: string,\nname: string,\nprice: double,\ntype: string,\nutctime: datetime,\nyear_high: double,\nyear_low: double\n}\n}\n```"
-        },
-        "Input": {
-            "Description": "None"
-        },
-        "Category": "WebService",
-        "Description": "Returns some stock quotes, along with other information, from [Yahoo Finance](https://finance.yahoo.com/)",
-        "Version": "1.0.1",
-        "Commands": {},
-        "Properties": {
-            "symbols": {
-                "description": "List of stock tickers to get quotes for"
-            }
+  "nio/Stock": {
+    "version": "1.0.1",
+    "description": "",
+    "properties": {
+      "include_query": {
+        "title": "Include Query Field",
+        "type": "StringType",
+        "description": "Whether to include queries in request to Yahoo Stocks.",
+        "default": null
+      },
+      "polling_interval": {
+        "title": "Polling Interval",
+        "type": "TimeDeltaType",
+        "description": "How often Yahoo Stocks is polled. When using more than one query. Each query will be polled at a period equal to the *polling interval* times the number of queries.",
+        "default": {
+          "seconds": 20
         }
-    }
+      },
+      "queries": {
+        "title": "Symbols/Tickers",
+        "type": "ListType",
+        "description": "Queries to include on request to Yahoo Stocks.",
+        "default": []
+      },
+      "retry_interval": {
+        "title": "Retry Interval",
+        "type": "TimeDeltaType",
+        "description": "When a url request fails, how long to wait before attempting to try again.",
+        "default": {
+          "seconds": 60
+        }
+      },
+      "retry_limit": {
+        "title": "Retry Limit",
+        "type": "IntType",
+        "description": "Number of times to retry on a poll.",
+        "default": 3
+      }
+    },
+    "inputs": {
+      "default": {
+        "description": "Any list of signals."
+      }
+    },
+    "outputs": {
+      "default": {
+        "description": "A list of signals, one per ticker."
+      }
+    },
+    "commands": {}
+  }
 }
