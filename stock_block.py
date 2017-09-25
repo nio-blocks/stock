@@ -14,7 +14,7 @@ class Stock(RESTPolling):
                      "&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys")
 
     queries = ListProperty(StringType, title='Symbols/Tickers', default=[])
-    version = VersionProperty('1.0.1')
+    version = VersionProperty("1.0.2")
 
     def _prepare_url(self, paging=False):
         sym_str = ",".join(['"' + sym + '"' for sym in self.queries()])
